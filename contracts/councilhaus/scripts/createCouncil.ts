@@ -9,37 +9,43 @@ async function main() {
     "CouncilFactory",
     COUNCIL_FACTORY_ADDRESS,
   );
-
+  console.log("Creating council...");
   const hash = await councilFactory.write.createCouncil([
     {
-      councilName: "Spacing Guild",
-      councilSymbol: "SPA",
+      councilName: "Kessenuma Council",
+      councilSymbol: "KES",
       councilMembers: [
         {
-          account: "0x0992b9c6eA15A09418fF454a436705aE29877D88",
+          // J
+          account: "0x14e5bf6bc8Be23aF794ecF5B8bdD23636131853d",
           votingPower: 100n,
         },
         {
-          account: "0xf632ce27ea72dea30d30c1a9700b6b3bceaa05cf",
+          // M
+          account: "0x537AFb1bB98386D41Fe5f4472C505d6BAec9e3D2",
           votingPower: 100n,
         },
         {
-          account: "0xbaD8bcc9Eb5749829cF12189fDD5c1230D6C85e8",
+          // L
+          account: "0x2BbCaC12706B47428664d553Af33CAf33684eF31",
           votingPower: 100n,
         },
       ],
       grantees: [
         {
-          name: "ENS Wayback Machine",
-          account: "0x6ea869B6870dd98552B0C7e47dA90702a436358b",
+          // J
+          name: "Childcare",
+          account: "0xAcdB5688A32e8Dc101A65245a87193C09b5D6096",
         },
         {
-          name: "Giveth House",
-          account: "0xB6989F472Bef8931e6Ca882b1f875539b7D5DA19",
+          // J
+          name: "Hiring Support",
+          account: "0xd0cCFeEF904cCE8e0C70014dB37e5133a6A8AA1c",
         },
         {
-          name: "EVMcrispr",
-          account: "0xeafFF6dB1965886348657E79195EB6f1A84657eB",
+          // H
+          name: "Afterschool Program",
+          account: "0x9c31ce53b7205f8e89325141aee5eef9283ed3d5",
         },
       ],
       distributionToken: "0x708169c8C87563Ce904E0a7F3BFC1F3b0b767f41", // DAIx
