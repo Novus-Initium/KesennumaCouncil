@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { gql, request } from "graphql-request";
-import { NETWORK } from "../../../../constants";
+import { NETWORK } from "../constants";
 
 export const useAllocation = (
   council: `0x${string}` | undefined,

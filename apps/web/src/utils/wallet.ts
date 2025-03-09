@@ -5,9 +5,9 @@ import { getDefaultConfig } from "@rainbow-me/rainbowkit";
 import { createPublicClient } from "viem";
 import { http, createConfig } from "wagmi";
 import { base, mainnet, optimism } from "wagmi/chains";
-import { SITE_NAME } from "../../../../constants";
+import { SITE_NAME } from "../constants";
 
-import { NETWORK } from "../../../../constants";
+import { NETWORK } from "../constants";
 const chain = NETWORK === "optimism" ? optimism : base;
 
 export const WALLETCONNECT_PROJECT_ID =

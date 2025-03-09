@@ -5,14 +5,24 @@ import "hardhat-abi-exporter";
 import type { AbiExporterUserConfig } from "hardhat-abi-exporter";
 import { vars } from "hardhat/config";
 
-const alchemyKey = vars.has("ALCHEMY_KEY") ? vars.get("ALCHEMY_KEY") : "";
-const walletKey = vars.has("WALLET_KEY") ? [vars.get("WALLET_KEY")] : [];
+// First try to get from Hardhat vars, then fall back to process.env
+const alchemyKey = vars.has("ALCHEMY_KEY") 
+  ? vars.get("ALCHEMY_KEY") 
+  : process.env.ALCHEMY_KEY || "";
+
+const walletKey = vars.has("WALLET_KEY") 
+  ? [vars.get("WALLET_KEY")] 
+  : process.env.WALLET_KEY 
+    ? [process.env.WALLET_KEY] 
+    : [];
+
 const etherscanKeyOptimism = vars.has("ETHERSCAN_KEY_OPTIMISM")
   ? vars.get("ETHERSCAN_KEY_OPTIMISM")
-  : "";
+  : process.env.ETHERSCAN_KEY_OPTIMISM || "";
+
 const etherscanKeyBase = vars.has("ETHERSCAN_KEY_BASE")
   ? vars.get("ETHERSCAN_KEY_BASE")
-  : "";
+  : process.env.ETHERSCAN_KEY_BASE || "";
 
 const config: HardhatUserConfig & { abiExporter: AbiExporterUserConfig } = {
   solidity: {

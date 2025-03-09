@@ -3,7 +3,7 @@ import { ToastProvider } from "@repo/ui/components/ui/toast";
 import { Toaster } from "@repo/ui/components/ui/toaster";
 import type { Metadata } from "next";
 import { Newsreader } from "next/font/google";
-import { SITE_DESCRIPTION, SITE_NAME } from "../../../../constants";
+import { SITE_DESCRIPTION, SITE_NAME } from "../constants";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { WalletProvider } from "../context/WalletProvider";

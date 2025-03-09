@@ -1,6 +1,6 @@
 import { viem } from "hardhat";
 import { parseEventLogs } from "viem";
-import { COUNCIL_FACTORY_ADDRESS } from "../../../constants";
+import { COUNCIL_FACTORY_ADDRESS } from "../../../apps/web/src/constants";
 
 async function main() {
   const publicClient = await viem.getPublicClient();

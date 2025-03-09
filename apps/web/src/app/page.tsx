@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { getAddress } from "viem";
 import { useAccount, useChains } from "wagmi";
-import { DEFAULT_COUNCIL_ADDRESS, NETWORK } from "../../../../constants";
+import { DEFAULT_COUNCIL_ADDRESS, NETWORK } from "../constants";
 import { CouncilName } from "../components/CouncilName";
 import VotingCard from "../components/VotingCard";
 import { useAllocation } from "../hooks/useAllocation";
