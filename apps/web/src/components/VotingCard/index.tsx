@@ -8,12 +8,28 @@ import {
   CardTitle,
 } from "@repo/ui/components/ui/card";
 import React, { useEffect, useMemo, useState } from "react";
+import { useAccount } from "wagmi";
 import VotingButton from "../VotingButton";
 import { SkeletonVote } from "./SkeletonVote";
 import { VoteInput } from "./VoteInput";
 
 type Project = { account: `0x${string}`; name: string };
 type Allocation = { [grantee: `0x${string}`]: number };
+
+type VotingCardProps = {
+  className: string;
+  council: `0x${string}` | undefined;
+  projects: Project[];
+  initialAllocation: Allocation | undefined;
+  votingPower: number;
+  maxVotedProjects: number;
+  isLoading: boolean;
+  councilMembers: {
+    account: `0x${string}`;
+    votingPower: number;
+    enabled: boolean;
+  }[];
+};
 
 const VotingCard = ({
   className,
@@ -23,15 +39,8 @@ const VotingCard = ({
   votingPower,
   maxVotedProjects,
   isLoading = false,
-}: {
-  className: string;
-  council: `0x${string}` | undefined;
-  projects: Project[];
-  initialAllocation: Allocation | undefined;
-  votingPower: number;
-  maxVotedProjects: number;
-  isLoading: boolean;
-}) => {
+  councilMembers,
+}: VotingCardProps) => {
   const randomizedProjects = useMemo(
     () => [...projects].sort(() => Math.random() - 0.5),
     [projects],
@@ -98,6 +107,18 @@ const VotingCard = ({
     return { voteCount, maxVoteForProject, disabled };
   };
 
+  // Check if the connected address is a council member
+  const { address } = useAccount();
+  console.log("Council Members:", councilMembers);
+  const isCouncilMember = useMemo(() => {
+    if (!address || !councilMembers) return false;
+    return councilMembers.some(
+      (member) =>
+        member.account.toLowerCase() === address.toLowerCase() &&
+        member.enabled,
+    );
+  }, [address, councilMembers]);
+
   return (
     <Card className={className}>
       <CardHeader>
@@ -157,7 +178,12 @@ const VotingCard = ({
         <VotingButton
           votes={votes}
           council={council}
-          disabled={votedProjects.length < 1}
+          disabled={
+            !isCouncilMember ||
+            votedProjects.length > maxVotedProjects ||
+            totalVotes > votingPower
+          }
+          className="mt-4"
         />
       </CardFooter>
     </Card>

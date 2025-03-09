@@ -17,6 +17,12 @@ const newsreader = Newsreader({
 export const metadata: Metadata = {
   title: SITE_NAME,
   description: SITE_DESCRIPTION,
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/logo.svg", type: "image/svg+xml" },
+    ],
+  },
 };
 
 export default function RootLayout({

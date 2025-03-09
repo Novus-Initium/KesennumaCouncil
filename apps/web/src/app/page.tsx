@@ -53,12 +53,7 @@ export default function Page() {
       <Link
         href={`https://explorer.superfluid.finance/${NETWORK}-mainnet/accounts/${council}?tab=pools`}
         target="_blank"
-      >
-        <CouncilName
-          name={councilName}
-          className="min-h-12 text-4xl font-bold mb-4 text-accent text-center"
-        />
-      </Link>
+      ></Link>
       <div className="flex flex-col gap-4 mb-4 text-justify">
         {totalVotingPower ? (
           !address ? (
@@ -66,25 +61,7 @@ export default function Page() {
               Connect your wallet to view your voting power and budget
               allocation.
             </p>
-          ) : (
-            <>
-              {votingPower ? (
-                <p>
-                  You are 1 of {councilMembers?.length} council members, holding{" "}
-                  {((votingPower / totalVotingPower) * 100).toFixed(2)}% of the
-                  total voting power. Your vote plays a significant role in
-                  determining how the budget is allocated to projects. Use your
-                  influence wisely.
-                </p>
-              ) : (
-                <p>
-                  You are not currently a council member. Only council members
-                  have voting power and can influence budget allocations. Stay
-                  tuned for future opportunities to join the council.
-                </p>
-              )}
-            </>
-          )
+          ) : null
         ) : (
           <>
             <Skeleton className="h-4 w-full" />
@@ -100,6 +77,7 @@ export default function Page() {
         maxVotedProjects={maxAllocationsPerMember ?? 0}
         isLoading={isLoading || !council}
         votingPower={votingPower}
+        councilMembers={councilMembers ?? []}
       />
       <ContractLinks
         council={council}

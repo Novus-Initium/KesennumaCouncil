@@ -46,16 +46,24 @@ const VotingButton = ({
               description: "You have successfully voted",
             });
           })
-          .catch(() => {
+          .catch((error) => {
+            console.error("Voting error:", error);
             setIsLoading(false);
             toast.toast({
               title: "Failed to vote",
               description: "Please try again",
+              variant: "destructive",
             });
           });
       }}
     >
-      {isLoading ? "Voting..." : address ? "Vote" : "Wallet not connected"}
+      {isLoading
+        ? "Voting..."
+        : !address
+          ? "Wallet not connected"
+          : disabled
+            ? "Not a council member or invalid allocation"
+            : "Vote"}
     </Button>
   );
 };
