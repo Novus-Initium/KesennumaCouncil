@@ -53,7 +53,7 @@ export default function Page() {
       <Link
         href={`https://explorer.superfluid.finance/${NETWORK}-mainnet/accounts/${council}?tab=pools`}
         target="_blank"
-      ></Link>
+      />
       <div className="flex flex-col gap-4 mb-4 text-justify">
         {totalVotingPower ? (
           !address ? (
