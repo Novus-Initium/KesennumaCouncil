@@ -12,6 +12,7 @@
     "@repo/ui": "*",
     "@tanstack/react-query": "^5.55.4",
     "ethereum-blockies-base64": "^1.0.2",
+    "graphql": "^16.10.0",
     "graphql-request": "^7.1.0",
     "next": "^14.2.8",
     "react": "^18",

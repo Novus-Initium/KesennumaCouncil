@@ -11,7 +11,11 @@
     "ui": "bun run --cwd packages/ui ui",
     "prepare": "husky",
     "install:web": "bun run --cwd apps/web install",
-    "install:contracts": "bun run --cwd contracts/councilhaus install"
+    "install:contracts": "bun run --cwd contracts/councilhaus install",
+    "web": "bun run --cwd apps/web dev",
+    "web:dev": "bun run --cwd apps/web dev --port 3000",
+    "web:build": "bun run --cwd apps/web build",
+    "web:start": "bun run --cwd apps/web start"
   },
   "devDependencies": {
     "@biomejs/biome": "1.8.3",
@@ -22,7 +26,11 @@
   "engines": {
     "node": ">=18"
   },
-  "packageManager": "bun@1.1.4",
-  "workspaces": ["apps/*", "contracts/*", "packages/*"],
-  "license": "AGPL-3.0-or-later"
+  "workspaces": [
+    "apps/*",
+    "contracts/*",
+    "packages/*"
+  ],
+  "license": "AGPL-3.0-or-later",
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }

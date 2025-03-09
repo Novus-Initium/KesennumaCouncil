@@ -1,0 +1,11 @@
+{
+  "framework": "nextjs",
+  "buildCommand": "bun run --cwd apps/web build",
+  "installCommand": "bun install",
+  "outputDirectory": "apps/web/.next",
+  "devCommand": "bun run --cwd apps/web dev --port 3001",
+  "env": {
+    "NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID": "8ff1d2d6bc10d5ca49712c3939ec6daf",
+    "ALCHEMY_KEY": "y3FJZbLdNt8pGCvoKbRin90vsh4739Lh"
+  }
+}
